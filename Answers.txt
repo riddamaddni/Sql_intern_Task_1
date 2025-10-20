@@ -1,0 +1,31 @@
+What is normalization?
+Normalization is the process of organizing a database's tables and columns to reduce data redundancy (repetition) and improve data integrity. It's about structuring your data logically so you don't have to store the same piece of information in multiple places.
+
+Primary vs Foreign Keys?
+A primary key is a column (or columns) that uniquely identifies every single row in its own table. It cannot be empty or have duplicate values.
+
+A foreign key is a column (or columns) in one table that links to the primary key of another table. Its purpose is to create and enforce a relationship between the two tables.
+
+What are constraints?
+Constraints are rules that are enforced on the data columns of a table. They are used to limit the type of data that can be inserted, ensuring the accuracy and reliability of the data. Common constraints include NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY, and CHECK.
+
+What is a surrogate key?
+A surrogate key is an "artificial" or "made-up" key used to uniquely identify a row. It has no real-world or business meaning (unlike an email address or a product code). It's typically just a unique number, like an AUTO_INCREMENT ID, whose only purpose is to act as the primary key.
+
+How do you avoid data redundancy?
+You avoid data redundancy primarily through normalization. This involves splitting your data into multiple, smaller, related tables. Instead of storing the same piece of information (like a professor's name) in many different places, you store it once in a PROFESSORS table and then use its ID (a foreign key) to reference it in other tables, like COURSES.
+
+What is an ER diagram?
+An ER (Entity-Relationship) diagram is a visual flowchart or map that shows how different "entities" (which usually become tables, like STUDENTS or COURSES) relate to one another within a database. It's a blueprint used to design and understand the database structure.
+
+What are the types of relationships in DBMS?
+There are three main types of relationships. A One-to-One relationship is where one record in a table relates to exactly one record in another. A One-to-Many relationship is where one record (like one DEPARTMENT) can be linked to many records in another table (like many STUDENTS). A Many-to-Many relationship is where many records in one table can link to many records in another (like STUDENTS and COURSES), which usually requires a third "junction" table to manage the links.
+
+Purpose of AUTO_INCREMENT?
+The purpose of AUTO_INCREMENT is to automatically generate a unique, sequential number every time a new row is added to a table. It's most commonly used to create simple, unique values for a primary key, so you don't have to manually think of and assign a new ID.
+
+What is the default storage engine in MySQL?
+The default storage engine in all modern versions of MySQL (since 5.5) is InnoDB. It's the default choice because it supports transactions, row-level locking, and foreign keys, all of which are critical for maintaining data integrity.
+
+What is a composite key?
+A composite key is a primary key that is created by combining two or more columns. The combination of these columns must be unique for every row, even if the values in the individual columns are not unique on their own.
