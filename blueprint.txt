@@ -1,0 +1,40 @@
+The Database Blueprint
+The database is split into different tables for one simple reason: to avoid a messy spreadsheet. Instead of one giant table where you re-type "Dr. John Smith" or "Paracetamol" over and over, you store them once and just link to them.
+
+Here's how the "folders" are organized:
+
+1. The "Dictionary" Tables (Lookup Tables)
+These are tiny tables that just hold standard options, like the choices in a dropdown menu. This is a neat trick to keep the data clean. Instead of letting people type "Suspect" or "suspect," you make them pick "Role #1" from a list.
+
+Lookup_Seriousness: Holds the options like 'SERIOUS' or 'NON-SERIOUS'.
+
+Lookup_Outcome: Holds 'RECOVERED', 'FATAL', 'UNKNOWN', etc.
+
+Lookup_Drug_Role: Stores whether a drug was the 'SUSPECT', 'CONCOMITANT' (taken at the same time), or 'INTERACTING'.
+
+Lookup_Route: Lists how the drug was taken ('Oral', 'Intravenous', etc.).
+
+2. The "Who" and "What" Tables (Core Tables)
+These tables store the main subjects—the people and things involved.
+
+Reporters: A list of the people (doctors, patients) who reported the problem.
+
+Patients: A list of the patients who experienced the problem.
+
+drugs: A master list (or catalog) of all the drugs.
+
+Reactions: A master list of all the possible side effects ('Nausea', 'Headache').
+
+3. The "Main Event" & "Connector" Tables
+This is where everything comes together.
+
+reports: This is the heart of the whole operation. Each row is one unique side effect report. It doesn't store the patient's name; it just stores their patient_id (linking to the Patients table). It does the same for the reporter, the seriousness, and the outcome.
+
+report_drugs & report_reactions: These are the "glue." A single report might involve three drugs (one suspect, two others) and two side effects (like nausea and a headache). These tables link that one report to all the different drugs and reactions associated with it.
+
+What the Script Does
+CREATE TABLE ...: All the lines starting with CREATE TABLE are just building this empty structure. It's like creating all the empty folders and defining what kind of information can go in them.
+
+INSERT INTO ...: All the lines starting with INSERT INTO are the final step. This is where the script populates the database with 10 sample patients, 10 drugs, a few reporters, and 10 sample side-effect reports to bring it all to life.
+
+That's it! The script builds the structure and then fills it with data so it's ready to be used.
